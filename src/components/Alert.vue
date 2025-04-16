@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <slot></slot>
-    <button @click="emits('close')">&times;</button>
+    <button aria-label="Close" @click="emits('close')">&times;</button>
   </div>
 </template>
 
