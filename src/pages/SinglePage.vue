@@ -25,13 +25,15 @@
 import {useFetch} from "@/composable/useFetch.js";
 import {computed, ref, toRaw} from "vue";
 import PostForm from "@/components/PostForm.vue";
+import {useRoute} from "vue-router";
 
 const props = defineProps({
   id: String
 })
+const route = useRoute()
 const formData = ref(null)
 const {state, data: post} = useFetch(computed(() => `https://jsonplaceholder.typicode.com/posts/${props.id}`))
-const thumbnail = computed(() => `https://picsum.photos/id/${post.value.id}/800/600`)
+const thumbnail = computed(() => `https://picsum.photos/id/${props.id}/800/600`)
 
 const onEdit = () => {
   formData.value = structuredClone(toRaw(post.value))

@@ -1,12 +1,12 @@
 <template>
 <article class="post">
-  <a :href="link">
+  <RouterLink :to="link">
     <img :src="thumbnail" alt="">
-  </a>
+  </RouterLink>
   <h2>
-    <a :href="link">
+    <RouterLink :to="link">
       {{ post.title }}
-    </a>
+    </RouterLink>
   </h2>
   <p>{{ post.body }}</p>
 </article>
@@ -18,7 +18,10 @@ import {computed} from "vue";
 const props = defineProps({
   post: Object
 })
-const link = computed(() => `#post:${props.post.id}`)
+const link = computed(() => ({
+  name: 'posts.show',
+  params: { id: props.post.id }
+}))
 const thumbnail = computed(() => `https://picsum.photos/id/${props.post.id}/200/180`)
 </script>
 

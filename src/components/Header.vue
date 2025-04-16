@@ -1,9 +1,9 @@
 <template>
   <header class="header">
-    <a class="header__logo" href="#">Mon site</a>
+    <RouterLink class="header__logo" :to="{name: 'home'}">Mon site</RouterLink>
     <nav>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
+      <RouterLink :to="{name: 'posts.index'}">Blog</RouterLink>
+      <RouterLink :to="{name: 'contact'}">Contact</RouterLink>
     </nav>
   </header>
 </template>
